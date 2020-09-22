@@ -1,8 +1,7 @@
-
-button {
-    background-color: steelblue;
-    color: lightskyblue;
-    transition-duration: 0.4s;
+.numbers {
+  background-color: steelblue;
+  color: lightskyblue;
+  transition-duration: 0.4s;
   border: none;
   padding: 15px 32px;
   text-align: center;
@@ -12,35 +11,75 @@ button {
   border-radius: 50%;
 }
 
-button:hover {
-    color: linen;
-    background-color: #4CAF50; /* Green */
-    font-size: 32px;
+.numbers:hover {
+  color: linen;
+  background-color: #4caf50; /* Green */
+  font-size: 32px;
 }
 
-button:disabled{
-    opacity: 0.6;
-    cursor: not-allowed;
-    background-color: gray;
-  }
-h1{
-  font-family: 'Architects Daughter', cursive; 
+.numbers:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: gray;
 }
-
 h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 300;
-    font-style: oblique;
-    color: limegreen;
+  font-style: italic;
+  color: aqua;
+  font-family: fantasy;
 }
 
 #p1 {
-  font-family: 'Amita', cursive;
+  font-family: "Amita", cursive;
   font-size: 3em;
 }
 
 #p2 {
-  font-family: 'Architects Daughter', cursive;
-  font-size: 2rem;
+  font-family: fantasy;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
+#firstPlay {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  font-family: fantasy;
+}
+
+#secondPlay {
+  display: flex;
+  justify-content: flex-end;
+  text-align: left;
+  margin-right: 50px;
+  font-family: fantasy;
+}
+
+img {
+  padding: 5px;
+  width: 130px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.text {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 60%;
+  font-family: fantasy;
+}
+
+#newGame {
+  background-color: lawngreen;
+  color: lemonchiffon;
+  padding: 20px 30px;
+  margin: 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 32px;
+  font-family: fantasy;
+}
