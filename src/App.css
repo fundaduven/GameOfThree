@@ -28,6 +28,11 @@ h2 {
   font-family: fantasy;
 }
 
+h3 {
+  text-align: left;
+  padding: 2em;
+}
+
 #p1 {
   font-family: "Amita", cursive;
   font-size: 3em;
@@ -67,10 +72,15 @@ img {
 
 .text {
   position: absolute;
-  bottom: 8px;
-  left: 16px;
-  font-size: 60%;
+  bottom: 10px;
+  left: 40px;
+  font-size: 70%;
   font-family: fantasy;
+}
+
+.historyData {
+  margin-top: 2em;
+  font-size: 120%;
 }
 
 #newGame {
@@ -82,4 +92,21 @@ img {
   display: inline-block;
   font-size: 32px;
   font-family: fantasy;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.newGameButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 40em;
+  height: 100vh;
+  width: 100vw;
 }

@@ -72,8 +72,8 @@ io.on("connection", (socket) => {
       canPlay: true,
       history: HISTORY,
     });
-    // if (NUMBER === WINNING_NUMBER || 0 yazdigimda neden yeni sayi 0a ulastiginda oyun bitmiyor?)
-    if (NUMBER === WINNING_NUMBER) {
+
+    if (NUMBER <= WINNING_NUMBER) {
       console.log("oyun bitti mi?");
       io.emit("GAME_FINISHED", { isWinner: true, winnerID: socket.id });
     }

@@ -79,89 +79,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1
-          className=" bg-light-green avenir dib br4 b--dashed b--black-60 pa3 ma2 grow bw2 shadow-5 f3 b"
-          id="p1"
-        >
-          IT'S TIME TO {this.state.isStarted ? "PLAY" : "WAIT"}
-        </h1>
-        {this.state.isStarted ? (
-          <div>
-            <p
-              className=" grow:hover animate__animated animate__tada animate__repeat-2"
-              id="p2"
-            >
-              Game number is: {this.state.number}
-            </p>
-            <button
-              disabled={!this.state.canPlay || this.state.isWinner}
-              id="-1"
-              className="numbers"
-              onClick={this.onButtonClicked}
-            >
-              -1
-            </button>
-            <button
-              disabled={!this.state.canPlay || this.state.isWinner}
-              id="0"
-              className="numbers"
-              onClick={this.onButtonClicked}
-            >
-              0
-            </button>
-            <button
-              disabled={!this.state.canPlay || this.state.isWinner}
-              id="+1"
-              className="numbers"
-              onClick={this.onButtonClicked}
-            >
-              +1
-            </button>
-          </div>
-        ) : (
-          <h2 className="i light-blue">
-            {" "}
-            Waiting for your playfellow. Get ready!{" "}
-          </h2>
-        )}
-        <h3>
-          {this.state.history.map((historyItem) => {
-            return (
-              <div>
-                {historyItem.username === "Second Player" ? (
-                  <div>
-                    <p id="secondPlay">
-                      <div className="container">
-                        <img alt="avatar" src={"https://robohash.org/funda"} />
-                        <div className="text">{historyItem.username}</div>
-                      </div>
-                      The old number is: {historyItem.number} <br />
-                      Move number is: {historyItem.moveNumber}
-                      <br />
-                      Your new game number is: {historyItem.newNumber}
-                    </p>
-                  </div>
-                ) : (
-                  <div>
-                    <p id="firstPlay">
-                      <div className="container">
-                        <img
-                          alt="avatar"
-                          src={"https://robohash.org/mertoid"}
-                        />
-                        <div className="text">{historyItem.username}</div>
-                      </div>
-                      The old number is: {historyItem.number} <br />
-                      Move number is: {historyItem.moveNumber}
-                      <br />
-                      Your new game number is: {historyItem.newNumber}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </h3>
+        <GameScreen
+          isStarted={this.state.isStarted}
+          number={this.state.number}
+          canPlay={this.state.canPlay}
+          isWinner={this.state.isWinner}
+          onButtonClicked={this.onButtonClicked}
+          history={this.state.history}
+        />
 
         <WinnerTitle
           winnerID={this.state.winnerID}
@@ -180,19 +105,25 @@ class App extends Component {
 export default App;
 
 ////////
+
 function WinnerTitle({ winnerID, socketId, isWinner }) {
   let winnerTitle;
+
   if (winnerID === socketId) {
     winnerTitle = (
-      <p className=" animate__animated animate__zoomInDown animate__infinite animate__slow blue">
-        YOU ARE THE WINNER!!!
-      </p>
+      <img
+        className="title"
+        alt="winner"
+        src="https://blog.ipleaders.in/wp-content/uploads/2019/10/CKTB-News-Hospice-Niagara-Draw.jpg"
+      />
     );
   } else if (isWinner && winnerID !== socketId) {
     winnerTitle = (
-      <p className=" animate__animated animate__zoomOutDown animate__infinite animate__slower dark-red">
-        Sorry... You lost.
-      </p>
+      <img
+        className="title"
+        alt="loser"
+        src="https://vignette4.wikia.nocookie.net/adventuretimewithfinnandjake/images/7/77/S2e16_You_lose.png/revision/latest?cb=20141109223427"
+      />
     );
   } else {
     winnerTitle = null;
@@ -202,8 +133,110 @@ function WinnerTitle({ winnerID, socketId, isWinner }) {
 
 function NewGame({ isShowButton, onButtonClicked }) {
   return isShowButton ? (
-    <button id="newGame" onClick={onButtonClicked}>
-      New Game
-    </button>
+    <div className="newGameButton">
+      <button id="newGame" onClick={onButtonClicked}>
+        New Game
+      </button>
+    </div>
   ) : null;
+}
+
+function GameScreen({
+  isStarted,
+  number,
+  canPlay,
+  isWinner,
+  onButtonClicked,
+  history,
+}) {
+  return (
+    <div>
+      <h1
+        className=" bg-light-green avenir dib br4 b--dashed b--black-60 pa3 ma2 grow bw2 shadow-5 f3 b"
+        id="p1"
+      >
+        IT'S TIME TO {isStarted ? "PLAY" : "WAIT"}
+      </h1>
+      {isStarted ? (
+        <div>
+          <p
+            className=" grow:hover animate__animated animate__tada animate__repeat-2"
+            id="p2"
+          >
+            Game number is: {number}
+          </p>
+          <div className="container">
+            <button
+              disabled={!canPlay || isWinner}
+              id="-1"
+              className="numbers"
+              onClick={onButtonClicked}
+            >
+              -1
+            </button>
+            <button
+              disabled={!canPlay || isWinner}
+              id="0"
+              className="numbers"
+              onClick={onButtonClicked}
+            >
+              0
+            </button>
+            <button
+              disabled={!canPlay || isWinner}
+              id="+1"
+              className="numbers"
+              onClick={onButtonClicked}
+            >
+              +1
+            </button>
+          </div>
+        </div>
+      ) : (
+        <h2 className="i light-blue">
+          {" "}
+          Waiting for your playfellow. Get ready!{" "}
+        </h2>
+      )}
+      <h3>
+        {history.map((historyItem) => {
+          return (
+            <div>
+              {historyItem.username === "Second Player" ? (
+                <div>
+                  <p id="secondPlay">
+                    <div className="container">
+                      <img alt="avatar" src={"https://robohash.org/funda"} />
+                      <div className="text">{historyItem.username}</div>
+                    </div>
+                    <div className="historyData">
+                      The old number is: {historyItem.number} <br />
+                      Move number is: {historyItem.moveNumber}
+                      <br />
+                      Your new game number is: {historyItem.newNumber}
+                    </div>
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <p id="firstPlay">
+                    <div className="container">
+                      <img alt="avatar" src={"https://robohash.org/mertoid"} />
+                      <div className="text">{historyItem.username}</div>
+                    </div>
+                    <div className="historyData">
+                      The old number is: {historyItem.number} <br />
+                      Move number is: {historyItem.moveNumber}
+                      <br />
+                      Your new game number is: {historyItem.newNumber}
+                    </div>
+                  </p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </h3>
+    </div>
+  );
 }
