@@ -1,0 +1,112 @@
+.numbers {
+  background-color: steelblue;
+  color: lightskyblue;
+  transition-duration: 0.4s;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50%;
+}
+
+.numbers:hover {
+  color: linen;
+  background-color: #4caf50; /* Green */
+  font-size: 32px;
+}
+
+.numbers:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: gray;
+}
+h2 {
+  font-style: italic;
+  color: aqua;
+  font-family: fantasy;
+}
+
+h3 {
+  text-align: left;
+  padding: 2em;
+}
+
+#p1 {
+  font-family: "Amita", cursive;
+  font-size: 3em;
+}
+
+#p2 {
+  font-family: fantasy;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#firstPlay {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  font-family: fantasy;
+}
+
+#secondPlay {
+  display: flex;
+  justify-content: flex-end;
+  text-align: left;
+  margin-right: 50px;
+  font-family: fantasy;
+}
+
+img {
+  padding: 5px;
+  width: 130px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.text {
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  font-size: 70%;
+  font-family: fantasy;
+}
+
+.historyData {
+  margin-top: 2em;
+  font-size: 120%;
+}
+
+#newGame {
+  background-color: lawngreen;
+  color: lemonchiffon;
+  padding: 20px 30px;
+  margin: 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 32px;
+  font-family: fantasy;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.newGameButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 40em;
+  height: 100vh;
+  width: 100vw;
+}
