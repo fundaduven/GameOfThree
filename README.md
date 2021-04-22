@@ -23,7 +23,7 @@ npm start
 Will start a `localhost`, open another browser window and paste the same `localhost` link. Start the game by calling :
 
 ```
-cd ..
+
 cd server
 node index.js
 ```
